@@ -22,7 +22,11 @@
       <v-container>
         <v-row>
           <v-col v-for="meme in memeAll" :key="meme._id" md="4">
-            <MemeCard :memeObject="meme" />
+            <MemeCard
+              :name="meme.name"
+              :caption="meme.caption"
+              :imgUrl="meme.url"
+            />
           </v-col>
         </v-row>
       </v-container>

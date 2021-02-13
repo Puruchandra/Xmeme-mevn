@@ -1,37 +1,31 @@
-<template>
-  <v-card class="mx-auto" max-width="400">
-    <v-img
-      class="white--text align-end"
-      height="200px"
-      src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-    >
-      <v-card-title>Top 10 Australian beaches</v-card-title>
-    </v-img>
+<template v-slot:placeholder>
+  <v-card class="mx-auto" max-width="400" min-height="300">
+    <!-- <v-row class="fill-height ma-0" align="center" justify="center">
+      <v-progress-circular
+        indeterminate
+        color="grey lighten-5"
+      ></v-progress-circular>
+    </v-row> -->
 
-    <v-card-subtitle class="pb-0">
-      Number 10
-    </v-card-subtitle>
+    <v-img class="white--text align-end" v-bind:src="memeObject.url" />
+    <v-card-subtitle class="pb-0"> {{ memeObject.name }} </v-card-subtitle>
 
     <v-card-text class="text--primary">
-      <div>Whitehaven Beach</div>
-
-      <div>Whitsunday Island, Whitsunday Islands</div>
+      <div>{{ memeObject.caption }}</div>
     </v-card-text>
-
     <v-card-actions>
-      <v-btn color="orange" text>
-        Share
-      </v-btn>
-
-      <v-btn color="orange" text>
-        Explore
-      </v-btn>
+      <v-btn color="blue" text> Like </v-btn>
+      <v-btn color="orange" text> Edit </v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 export default {
-  name: "MemeCard"
+  name: "MemeCard",
+  props: ["memeObject"],
 };
 </script>
+
+<style>
+</style>

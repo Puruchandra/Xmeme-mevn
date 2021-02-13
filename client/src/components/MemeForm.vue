@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid">
+  <v-form>
     <v-card>
       <v-toolbar color="primary" dark>Lets Brew the Craziest Meme</v-toolbar>
       <v-card-text>
@@ -8,8 +8,6 @@
             <v-col cols="12">
               <v-text-field
                 v-model="name"
-                rounded="true"
-                outlined="true"
                 label="Name*"
                 required
               ></v-text-field>
@@ -18,27 +16,20 @@
             <v-col cols="12">
               <v-text-field
                 v-model="caption"
-                rounded="true"
-                outlined="true"
                 label="Caption"
                 required
               ></v-text-field>
             </v-col>
 
             <v-col cols="12">
-              <v-text-field
-                v-model="url"
-                rounded="true"
-                outlined="true"
-                label="Url"
-              ></v-text-field>
+              <v-text-field v-model="url" label="Url"></v-text-field>
             </v-col>
           </v-row>
         </v-container>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="success" class="mr-4" @click="onSave"> Save </v-btn>
+        <v-btn color="success" class="mr-4" @click="onSaved"> Save </v-btn>
       </v-card-actions>
     </v-card>
   </v-form>
@@ -47,6 +38,8 @@
 
 
 <script>
+// import axios from "axios";
+import { mapActions } from "vuex";
 export default {
   name: "MemeForm",
   data: () => ({
@@ -56,8 +49,14 @@ export default {
   }),
 
   methods: {
+    ...mapActions(["postAMeme"]),
+
     onSaved() {
-      this.onSave(this.$data.name);
+      this.postAMeme({
+        name: this.$data.name,
+        caption: this.$data.caption,
+        url: this.$data.url,
+      });
     },
   },
 
