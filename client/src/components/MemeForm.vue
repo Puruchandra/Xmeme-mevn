@@ -9,20 +9,22 @@
               <v-text-field
                 v-model="name"
                 label="Name*"
-                required
+                solo-inverted
               ></v-text-field>
             </v-col>
-
             <v-col cols="12">
               <v-text-field
                 v-model="caption"
-                label="Caption"
-                required
+                label="Caption*"
+                solo-inverted
               ></v-text-field>
             </v-col>
-
             <v-col cols="12">
-              <v-text-field v-model="url" label="Url"></v-text-field>
+              <v-text-field
+                v-model="url"
+                label="URL*"
+                solo-inverted
+              ></v-text-field>
             </v-col>
           </v-row>
         </v-container>
@@ -38,7 +40,6 @@
 
 
 <script>
-// import axios from "axios";
 import { mapActions } from "vuex";
 export default {
   name: "MemeForm",
@@ -56,6 +57,12 @@ export default {
         name: this.$data.name,
         caption: this.$data.caption,
         url: this.$data.url,
+      }).then((res) => {
+        //clear form on success
+        console.log(res);
+        this.$data.name = "";
+        this.$data.caption = "";
+        this.$data.url = "";
       });
     },
   },

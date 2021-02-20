@@ -26,12 +26,14 @@
           </v-col>
         </v-row>
       </v-container>
+      <!-- <NewCardLayout /> -->
     </v-main>
   </v-app>
 </template>
 
 <script>
 import MemeForm from "./components/MemeForm";
+// import NewCardLayout from "./components/NewCardLayout";
 import MemeCard from "./components/MemeCard";
 import { mapActions, mapGetters } from "vuex";
 
@@ -40,6 +42,7 @@ export default {
   components: {
     MemeForm,
     MemeCard,
+    // NewCardLayout,
   },
 
   methods: {
